@@ -1,6 +1,6 @@
 # Naseej Backend API - Egyptian Handmade Carpets E-Commerce
 
-## 🎯 About
+##  About
 
 The Naseej Backend API is a comprehensive PHP-based RESTful service that powers a full-featured e-commerce platform for authentic Egyptian handmade carpets. Built with scalability, security, and performance in mind, it handles everything from user authentication to order processing and real-time notifications.
 
@@ -16,9 +16,9 @@ The Naseej Backend API is a comprehensive PHP-based RESTful service that powers 
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🔐 Authentication & Authorization
+###  Authentication & Authorization
 
 Customer Authentication
 - User registration with email verification (OTP)
@@ -40,7 +40,7 @@ Security Features
 - CSRF protection
 - SQL injection prevention
 
-### 🛍️ E-Commerce Core
+###  E-Commerce Core
 
 Product Management
 - CRUD operations for products
@@ -71,7 +71,7 @@ FavoritesWishlist
 - Check if product is favorited
 - Retrieve user's favorite products
 
-### 📦 Order Management
+###  Order Management
 
 Order Processing
 - Order creation with validation
@@ -96,7 +96,7 @@ Order Features
 - Reorder functionality
 - Order search and filtering
 
-### 👥 Customer Management
+###  Customer Management
 
 Customer Operations
 - View all customers (admin)
@@ -119,7 +119,7 @@ Payment Methods
 - Set default payment method
 - Updatedelete payment methods
 
-### 🏪 Store Management
+###  Store Management
 
 Physical Stores
 - Store CRUD operations
@@ -135,7 +135,7 @@ Store Features
 - Store details for customers
 - Distance-based store suggestions
 
-### 📊 Dashboard & Analytics
+###  Dashboard & Analytics
 
 Sales Analytics
 - Real-time statistics
@@ -151,7 +151,7 @@ Insights
 - Low stock alerts
 - Pending order counts
 
-### 🔔 Notifications System
+###  Notifications System
 
 Notification Management
 - Create notifications for users
@@ -168,7 +168,7 @@ Notification Types
 - Promotional offers
 - System announcements
 
-### 📧 Email Services
+###  Email Services
 
 Email Functionality
 - OTP verification emails
@@ -180,7 +180,7 @@ Email Functionality
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Design Patterns
 
@@ -208,7 +208,7 @@ Request → Middleware → Controller → Service → Database
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 backend
@@ -431,7 +431,7 @@ backend
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -546,499 +546,3 @@ Visit `httplocalhost8000authtest_auth.php`
 
 ---
 
-## 📚 API Documentation
-
-### Base URL
-
-```
-httpsyour-domain.comapi
-```
-
-### Response Format
-
-All API responses follow this standard format
-
-Success Response
-```json
-{
-  status success,
-  message Operation completed successfully,
-  data {
-     Response data
-  }
-}
-```
-
-Error Response
-```json
-{
-  status error,
-  message Error description,
-  errors {
-     Validation errors (optional)
-  }
-}
-```
-
-### Authentication
-
-Most endpoints require authentication via JWT tokens.
-
-Header
-```
-Authorization Bearer {your_jwt_token}
-```
-
----
-
-### 🔐 Authentication Endpoints
-
-#### Register User
-
-```http
-POST user_authsignup.php
-Content-Type applicationjson
-
-{
-  name John Doe,
-  email john@example.com,
-  phone +201234567890,
-  password SecurePass123!,
-  confirm_password SecurePass123!
-}
-```
-
-Response
-```json
-{
-  status success,
-  message Registration successful. Please verify your email.,
-  data {
-    user_id 1,
-    email john@example.com,
-    otp_sent true
-  }
-}
-```
-
-#### Verify Email
-
-```http
-POST user_authverify_email.php
-Content-Type applicationjson
-
-{
-  email john@example.com,
-  otp 123456
-}
-```
-
-#### Login
-
-```http
-POST user_authlogin.php
-Content-Type applicationjson
-
-{
-  email john@example.com,
-  password SecurePass123!
-}
-```
-
-Response
-```json
-{
-  status success,
-  message Login successful,
-  data {
-    user {
-      id 1,
-      name John Doe,
-      email john@example.com,
-      phone +201234567890,
-      profile_image profilesuser_1.jpg
-    },
-    token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...,
-    expires_in 3600
-  }
-}
-```
-
-#### Forgot Password
-
-```http
-POST user_authforgot_password.php
-Content-Type applicationjson
-
-{
-  email john@example.com
-}
-```
-
-#### Reset Password
-
-```http
-POST user_authreset_password.php
-Content-Type applicationjson
-
-{
-  email john@example.com,
-  otp 123456,
-  new_password NewSecurePass123!,
-  confirm_password NewSecurePass123!
-}
-```
-
----
-
-### 🛍️ Product Endpoints
-
-#### Get All Products
-
-```http
-POST user_shopget_all_products.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  category_id 1,
-  min_price 100,
-  max_price 5000,
-  search carpet,
-  sort_by price_asc,
-  page 1,
-  limit 20
-}
-```
-
-Response
-```json
-{
-  status success,
-  data {
-    products [
-      {
-        id 1,
-        name Handwoven Persian Carpet,
-        description Authentic handmade carpet...,
-        price 2500.00,
-        sale_price 2000.00,
-        discount_percentage 20,
-        category_id 1,
-        category_name Persian Carpets,
-        stock 15,
-        images [
-          productsproduct_1_1.jpg,
-          productsproduct_1_2.jpg
-        ],
-        is_favorite false,
-        rating 4.5,
-        reviews_count 23,
-        free_shipping true,
-        is_new false,
-        created_at 2024-01-15 103000
-      }
-    ],
-    pagination {
-      current_page 1,
-      total_pages 5,
-      total_items 95,
-      items_per_page 20
-    }
-  }
-}
-```
-
-#### Get Product Details
-
-```http
-GET user_shopget_product_details.phpid=1
-Authorization Bearer {token}
-```
-
-#### Search Products
-
-```http
-POST user_shopsearch_products.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  query hand woven,
-  category_id null,
-  limit 10
-}
-```
-
----
-
-### 🛒 Cart Endpoints
-
-#### Add to Cart
-
-```http
-POST cartadd_to_cart.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  product_id 1,
-  quantity 2,
-  size Medium,
-  color Red
-}
-```
-
-#### Get Cart
-
-```http
-GET cartget_cart.php
-Authorization Bearer {token}
-```
-
-Response
-```json
-{
-  status success,
-  data {
-    items [
-      {
-        cart_item_id 1,
-        product_id 1,
-        product_name Handwoven Persian Carpet,
-        price 2000.00,
-        quantity 2,
-        size Medium,
-        color Red,
-        image productsproduct_1_1.jpg,
-        stock 15,
-        subtotal 4000.00
-      }
-    ],
-    summary {
-      subtotal 4000.00,
-      shipping 50.00,
-      tax 200.00,
-      total 4250.00,
-      items_count 2,
-      free_shipping_eligible false,
-      free_shipping_threshold 5000.00
-    }
-  }
-}
-```
-
-#### Update Cart Item
-
-```http
-PUT cartupdate_cart_item.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  cart_item_id 1,
-  quantity 3
-}
-```
-
-#### Remove from Cart
-
-```http
-DELETE cartremove_from_cart.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  cart_item_id 1
-}
-```
-
----
-
-### 📦 Order Endpoints
-
-#### Create Order
-
-```http
-POST user_orderscreate_order.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  address_id 1,
-  payment_method_id 1,
-  delivery_option home_delivery,
-  store_id null,
-  notes Please call before delivery,
-  items [
-    {
-      product_id 1,
-      quantity 2,
-      price 2000.00
-    }
-  ]
-}
-```
-
-Response
-```json
-{
-  status success,
-  message Order placed successfully,
-  data {
-    order_id 123,
-    order_number ORD-2024-00123,
-    total_amount 4250.00,
-    status pending,
-    estimated_delivery 2024-02-01
-  }
-}
-```
-
-#### Get Orders
-
-```http
-GET user_ordersget_orders.phpstatus=all&page=1
-Authorization Bearer {token}
-```
-
-#### Get Order Details
-
-```http
-GET user_ordersget_order_details.phporder_id=123
-Authorization Bearer {token}
-```
-
-Response
-```json
-{
-  status success,
-  data {
-    order {
-      id 123,
-      order_number ORD-2024-00123,
-      status processing,
-      payment_status paid,
-      total_amount 4250.00,
-      created_at 2024-01-20 143000,
-      estimated_delivery 2024-02-01
-    },
-    items [
-      {
-        product_id 1,
-        product_name Handwoven Persian Carpet,
-        quantity 2,
-        price 2000.00,
-        subtotal 4000.00,
-        image productsproduct_1_1.jpg
-      }
-    ],
-    address {
-      street 123 Main St,
-      city Cairo,
-      governorate Cairo,
-      postal_code 11511
-    },
-    tracking [
-      {
-        status pending,
-        timestamp 2024-01-20 143000,
-        description Order placed
-      },
-      {
-        status processing,
-        timestamp 2024-01-20 150000,
-        description Order confirmed and being prepared
-      }
-    ]
-  }
-}
-```
-
-#### Track Order
-
-```http
-GET user_orderstrack_order.phporder_id=123
-Authorization Bearer {token}
-```
-
-#### Cancel Order
-
-```http
-POST user_orderscancel_order.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  order_id 123,
-  reason Changed my mind
-}
-```
-
----
-
-### ⭐ Favorites Endpoints
-
-#### Add to Favorites
-
-```http
-POST favoritesadd_favorite.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  product_id 1
-}
-```
-
-#### Get Favorites
-
-```http
-GET favoritesget_favorites.php
-Authorization Bearer {token}
-```
-
-#### Remove from Favorites
-
-```http
-DELETE favoritesremove_favorite.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  product_id 1
-}
-```
-
----
-
-### 📍 Address Endpoints
-
-#### Add Address
-
-```http
-POST addressesadd_address.php
-Authorization Bearer {token}
-Content-Type applicationjson
-
-{
-  label Home,
-  street 123 Main Street,
-  building Building 5,
-  floor 3rd Floor,
-  apartment Apt 7,
-  city Cairo,
-  governorate Cairo,
-  postal_code 11511,
-  phone +201234567890,
-  is_default true
-}
-```
-
-#### Get Addresses
-
-```http
-GET addressesget_addresses.php
-Authorization Bearer {token}
-```
-s
