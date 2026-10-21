@@ -11,7 +11,7 @@ define("STATUS_ERROR", "error");
 
 // Email Settings
 define('SMTP_HOST', 'smtp.hostinger.com');
-define('SMTP_PORT', 587);
+define('SMTP_PORT', );
 define('SMTP_USERNAME', '');
 define('SMTP_PASSWORD', '');  //actual password
 define('SMTP_FROM_EMAIL', '');
